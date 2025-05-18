@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 230 25% 7%;
+    --foreground: 210 40% 98%;
+
+    --card: 230 25% 9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 230 25% 9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 180 100% 60%;
+    --primary-foreground: 230 25% 7%;
+
+    --secondary: 320 100% 65%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 230 25% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 275 100% 65%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 100% 65%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 230 25% 15%;
+    --input: 230 25% 15%;
+    --ring: 180 100% 60%;
+
+    --radius: 0.25rem;
+
+    --chart-1: 180 100% 60%;
+    --chart-2: 320 100% 65%;
+    --chart-3: 275 100% 65%;
+    --chart-4: 130 100% 65%;
+    --chart-5: 0 100% 65%;
+  }
+
+  .dark {
+    --background: 230 25% 7%;
+    --foreground: 210 40% 98%;
+
+    --card: 230 25% 9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 230 25% 9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 180 100% 60%;
+    --primary-foreground: 230 25% 7%;
+
+    --secondary: 320 100% 65%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 230 25% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 275 100% 65%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 100% 65%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 230 25% 15%;
+    --input: 230 25% 15%;
+    --ring: 180 100% 60%;
+
+    --chart-1: 180 100% 60%;
+    --chart-2: 320 100% 65%;
+    --chart-3: 275 100% 65%;
+    --chart-4: 130 100% 65%;
+    --chart-5: 0 100% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-image: radial-gradient(circle at 25px 25px, rgba(3, 202, 252, 0.05) 2px, transparent 0),
+      radial-gradient(circle at 75px 75px, rgba(255, 0, 128, 0.05) 2px, transparent 0);
+    background-size: 100px 100px;
+  }
+}
+
+@layer utilities {
+  .neon-border {
+    @apply border border-transparent relative;
+    box-shadow: 0 0 5px theme("colors.primary.DEFAULT"), 0 0 10px theme("colors.primary.DEFAULT");
+  }
+
+  .neon-border-secondary {
+    @apply border border-transparent relative;
+    box-shadow: 0 0 5px theme("colors.secondary.DEFAULT"), 0 0 10px theme("colors.secondary.DEFAULT");
+  }
+
+  .neon-border-accent {
+    @apply border border-transparent relative;
+    box-shadow: 0 0 5px theme("colors.accent.DEFAULT"), 0 0 10px theme("colors.accent.DEFAULT");
+  }
+
+  .neon-text {
+    text-shadow: 0 0 5px theme("colors.primary.DEFAULT"), 0 0 10px theme("colors.primary.DEFAULT");
+  }
+
+  .neon-text-secondary {
+    text-shadow: 0 0 5px theme("colors.secondary.DEFAULT"), 0 0 10px theme("colors.secondary.DEFAULT");
+  }
+
+  .neon-text-accent {
+    text-shadow: 0 0 5px theme("colors.accent.DEFAULT"), 0 0 10px theme("colors.accent.DEFAULT");
+  }
+
+  .cyberpunk-card {
+    @apply bg-card/80 backdrop-blur-sm border-l-2 border-t-2 border-primary/50;
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+  }
+
+  .cyberpunk-button {
+    @apply relative overflow-hidden transition-all duration-300;
+    background: linear-gradient(90deg, rgba(var(--primary), 0.2) 0%, rgba(var(--primary), 0.1) 100%);
+  }
+
+  .cyberpunk-button:hover {
+    @apply bg-primary/30;
+    box-shadow: 0 0 10px theme("colors.primary.DEFAULT");
+  }
+
+  .cyberpunk-button:before {
+    content: "";
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(90deg, transparent 0%, rgba(var(--primary), 0.2) 50%, transparent 100%);
+  }
+
+  .cyberpunk-button:hover:before {
+    @apply opacity-100;
+    animation: cyberpunk-button-glow 1.5s infinite;
+  }
+
+  @keyframes cyberpunk-button-glow {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .glitch {
+    position: relative;
+  }
+
+  .glitch:before,
+  .glitch:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+  }
+
+  .glitch:before {
+    left: 2px;
+    text-shadow: -1px 0 theme("colors.secondary.DEFAULT");
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+  }
+
+  .glitch:after {
+    left: -2px;
+    text-shadow: 1px 0 theme("colors.accent.DEFAULT");
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+  }
+
+  @keyframes glitch-anim-1 {
+    0% {
+      clip-path: inset(20% 0 80% 0);
+    }
+    20% {
+      clip-path: inset(60% 0 40% 0);
+    }
+    40% {
+      clip-path: inset(40% 0 60% 0);
+    }
+    60% {
+      clip-path: inset(80% 0 20% 0);
+    }
+    80% {
+      clip-path: inset(10% 0 90% 0);
+    }
+    100% {
+      clip-path: inset(30% 0 70% 0);
+    }
+  }
+
+  @keyframes glitch-anim-2 {
+    0% {
+      clip-path: inset(10% 0 90% 0);
+    }
+    20% {
+      clip-path: inset(30% 0 70% 0);
+    }
+    40% {
+      clip-path: inset(50% 0 50% 0);
+    }
+    60% {
+      clip-path: inset(70% 0 30% 0);
+    }
+    80% {
+      clip-path: inset(90% 0 10% 0);
+    }
+    100% {
+      clip-path: inset(20% 0 80% 0);
+    }
+  }
+
+  .pulse {
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(var(--primary), 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(var(--primary), 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(var(--primary), 0);
+    }
+  }
+
+  .scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .scanline:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: rgba(var(--primary), 0.1);
+    animation: scanline 6s linear infinite;
+  }
+
+  @keyframes scanline {
+    0% {
+      top: -50%;
+    }
+    100% {
+      top: 120%;
+    }
+  }
+}

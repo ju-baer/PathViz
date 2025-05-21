@@ -51,6 +51,8 @@ Whether you're a computer science student, teacher, or enthusiast, PathViz helps
 
 
 ## 🚀 Getting Started
+### 🌐 Live Demo
+check this project out at https://path-viz.vercel.app/
 ### Run Locally
 ```bash
 git clone https://github.com/ju-baer/PathViz
